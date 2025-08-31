@@ -1,0 +1,5 @@
+date,city,temp,humidity,wind_speed,condition
+2024-07-10,London,22,65,5,Clear
+2024-07-10,Singapore,30,85,3,Rain
+2024-07-10,New York,28,70,6,Clouds
+

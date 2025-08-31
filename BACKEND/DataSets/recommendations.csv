@@ -1,0 +1,25 @@
+condition,rule,advice,severity
+wind>15,Wind speed over 15 knots,Increase lookout frequency and monitor heading.,Medium
+wind>20,Wind speed over 20 knots,Delay departure or adjust course.,High
+wind>25,Wind speed over 25 knots,Secure loose equipment and restrict deck access.,High
+wind>35,Wind speed over 35 knots,Seek shelter or delay voyage.,Critical
+wave>2,Wave height over 2m,Reduce speed slightly and monitor vessel stability.,Medium
+wave>3,Wave height over 3m,Reduce speed and maintain safe distance from shore.,High
+wave>5,Wave height over 5m,Delay departure and avoid exposed waters.,Critical
+swell>10,Swell period greater than 10s,Expect long rolling seas; adjust cargo securing.,Medium
+swell>15,Swell period greater than 15s,Severe vessel roll likely; reroute if possible.,High
+current>1.5,Ocean current above 1.5 knots,Recalculate ETA and fuel usage.,Medium
+current>2.5,Ocean current above 2.5 knots,Adjust course to minimize drift.,High
+visibility<5,Visibility below 5km,Switch on radar and AIS tracking.,Medium
+visibility<2,Visibility below 2km,Use radar/AIS and slow down.,High
+visibility<0.5,Visibility below 0.5km,Stop or anchor until safe visibility returns.,Critical
+storm=TS,Tropical storm detected,Delay voyage; prepare storm contingency.,High
+storm=CAT1,Category 1 hurricane expected,Seek nearest safe port.,High
+storm=CAT3,Category 3 hurricane expected,Abort voyage immediately.,Critical
+storm=CAT5,Category 5 hurricane imminent,Evacuate route; total suspension advised.,Critical
+temp>35,Air temperature over 35°C,Monitor cooling systems and reduce engine load.,Medium
+temp<-5,Air temperature below -5°C,Monitor ice formation on decks and superstructure.,Medium
+ice=present,Sea ice detected,Slow speed and follow ice navigation protocol.,High
+fuel<30,Fuel reserves below 30%,Plan refueling stops urgently.,High
+cargo=hazardous,Hazardous cargo onboard,Follow strict IMO handling and secure protocols.,High
+engine=overheat,Engine overheating detected,Reduce RPM and activate cooling systems.,High
