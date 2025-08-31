@@ -1,97 +1,96 @@
-🌊 Weather Engine
-Project Info
-A full-stack weather application that provides real-time weather updates, historical data, alerts, and expert recommendations.  
-The project includes a **React + Vite + TailwindCSS frontend** and a **Flask backend** with datasets for weather insights.
+# 🌦️ Weathermary – Smart Weather & Route Planner  
 
-## 📌 Features
-- Current weather information
-- Historical weather dataset integration
-- Alerts & recommendations
-- Expert chatbot support
-- Responsive UI with TailwindCSS
-
- This project provides an interactive ocean weather dashboard with:
-- Moving ocean water animation
-- Interactive world map with country boundaries
-- Modern UI built with React, TailwindCSS, shadcn/ui
-
-## How to Run Locally
-The only requirement is having Node.js & npm installed - Install Node.js
+Weathermary is a **full-stack web application** that combines **real-time weather updates**, **route planning**, and **travel cost estimation**.  
+It helps users plan journeys efficiently by considering **live weather conditions, potential delays, and estimated travel costs**.  
 
 ---
 
-## ⚙️ Project Setup
+## 🔗 Live Demo & Resources
+- 🌐 **Live URL:** [Click Here](https://vercel-frontend-nine-topaz.vercel.app/)  
+- 📑 **Hackathon PPT:** [View Presentation](https://docs.google.com/presentation/d/15QfzGMapsxUORMl4FlOzoMDB-1M1YO3g/edit?usp=drive_link&ouid=101371929165342517171&rtpof=true&sd=true) 
 
-Back end:
-
-# Step 1: Navigate to backend folder
-cd Weather-main/BACKEND
-
-# Step 2: Create and activate virtual environment
-python -m venv venv
-source venv/bin/activate   # Linux/Mac
-venv\Scripts\activate      # Windows
-
-# Step 3: Install required packages
-pip install -r requirements.txt
-
-# Step 4: Run the backend server:
-python app.py
 
 ---
-Front end:
 
-# Step 1: Clone the repository using your Git URL
-git clone <https://github.com/Pranjalbisht4/Weather.git>
+## ✨ Features
+- 🌍 **Real-time weather data** from APIs  
+- 🗺️ **Route planner** with travel distance & time estimation  
+- ⛽ **Fuel cost calculation** based on live fuel prices  
+- ⏱️ **Delay prediction** due to weather conditions  
+- 📊 **User-friendly dashboard** with cards and charts  
+- 📱 Responsive UI for desktop & mobile  
 
-# Step 2: Navigate to the project directory
-cd c:/Weather-main
+---
 
-# Step 3: Install the necessary dependencies
+## 🛠️ Tech Stack  
+
+### **Frontend**
+- React.js (UI rendering & components)  
+- TailwindCSS (styling)  
+- Axios / Fetch API (to call backend & weather APIs)  
+
+### **Backend**
+- Node.js with Express.js (REST API)  
+- Business logic for routes, weather integration & cost calculation  
+- Error handling for API failures  
+
+### **APIs**
+- OpenWeather API (real-time weather data)  
+- Google Maps / Mapbox API (routes & distance)  
+- (Optional) Fuel API (for fuel price calculation)  
+
+### **Database (Optional Layer)**
+- MongoDB / Firebase (to store user history, cached weather data, saved routes)  
+
+---
+
+## ⚙️ How to Run Locally  
+
+### 🔹 Backend Setup
+```bash
+# Navigate to backend folder
+cd weathermary-main/backend
+
+# Install dependencies
 npm install
 
-# Step 4: Start the development server with auto-reloading
+# Create .env file and add your API keys
+# Example:
+# WEATHER_API_KEY=your_openweather_key
+# MAPS_API_KEY=your_googlemaps_key
+
+# Start backend server
+npm run start
+
+
+# Navigate to frontend folder
+cd weathermary-main/frontend
+
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-Now open http://localhost:5173 in your browser 🎉
 
-🛠️ Technologies Used
-⚡ Vite (for fast builds & dev server)
-
-⚛️ React (frontend library)
-
-🎨 Tailwind CSS (styling)
-
-🧩 shadcn-ui (UI components)
-
-🌍 Interactive Map (world map with country boundaries)
-
-📦 Deployment
-You can deploy this project to Vercel, Netlify, or any hosting provider that supports static React apps.
-
-For example, with Vercel:
-
-npm run build
-Then deploy the dist/ folder.
-
+# Open in browser
+http://localhost:5173
 
 ## Project Structure
 ## 📂 Project Structure
 
 ```plaintext
-Weather-main/
-├── index.html             # Frontend entry
-├── package.json           # Frontend dependencies
-├── tailwind.config.ts     # Tailwind setup
-├── vite.config.ts         # Vite config
-├── BACKEND/
-│   ├── app.py             # Flask API
-│   ├── config.py          # Configurations
-│   ├── requirements.txt   # Backend dependencies
-│   └── DataSets/          # Weather datasets
-│       ├── alerts.csv
-│       ├── expert_chat.csv
-│       ├── historical_weather.csv
-│       └── recommendations.csv
+weathermary-main/
+├── frontend/              # React + Tailwind frontend
+│   ├── src/               # Components & pages
+│   ├── package.json       # Frontend dependencies
+│   └── vite.config.js     # Vite config
+├── backend/               # Node.js backend
+│   ├── app.js             # Main Express server
+│   ├── routes/            # API routes (weather, routes, costs)
+│   ├── controllers/       # Business logic
+│   ├── package.json       # Backend dependencies
+│   └── .env.example       # Example environment variables
+└── README.md              # Project documentation
 
 
 
