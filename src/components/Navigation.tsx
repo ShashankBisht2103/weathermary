@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Home, Map, TrendingUp, Target, Menu, X, Ship } from "lucide-react";
+import { Home, Map, TrendingUp, Target, Menu, X, Ship, Bell } from "lucide-react";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,6 +11,7 @@ const Navigation = () => {
     { path: "/map", label: "Interactive Map", icon: Map },
     { path: "/forecast", label: "Forecast", icon: TrendingUp },
     { path: "/recommendations", label: "Recommendations", icon: Target },
+    { path: "/alerts", label: "Alerts", icon: Bell },
     { path: "/simulation", label: "Simulation Panel", icon: Target }, // Connected
   ];
 
@@ -45,7 +46,7 @@ const Navigation = () => {
                       : "text-blue-200 hover:bg-blue-800/50 hover:text-white"
                   }`}
                 >
-                  <Icon className="h-4 w-4" />
+                  <Icon className="h-5 w-5" />
                   <span>{item.label}</span>
                 </Link>
               );
