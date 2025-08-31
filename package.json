@@ -1,8 +1,4 @@
 {
-<<<<<<< HEAD
-  "dependencies": {
-    "@heroicons/react": "^2.2.0"
-=======
   "name": "maritime-weather-intelligence",
   "version": "1.0.0",
   "private": true,
@@ -88,6 +84,5 @@
     "@tailwindcss/typography": "^0.5.16",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.38.0"
->>>>>>> 2d8be2e3b108ff7f5f775aaff24ad1bd2cea713b
   }
 }
