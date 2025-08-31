@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -11,8 +11,9 @@ import Map from "./pages/Map";
 import Forecast from "./pages/Forecast";
 import Recommendations from "./pages/Recommendations";
 import Alerts from "./pages/Alerts";
+import SimulationPanel from "./pages/SimulationPanel"; // <- Added Simulation Panel
 import NotFound from "./pages/NotFound";
-import Chatbot from "./components/Chatbot"; // <-- Make sure this import is present
+import Chatbot from "./components/Chatbot"; 
 
 const queryClient = new QueryClient();
 
@@ -33,7 +34,6 @@ const App = () => {
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          {/* Shipmate Chatbot floats above all pages */}
           <Chatbot />
           <div className="min-h-screen bg-background">
             <Navigation />
@@ -43,6 +43,7 @@ const App = () => {
               <Route path="/forecast" element={<Forecast />} />
               <Route path="/recommendations" element={<Recommendations />} />
               <Route path="/alerts" element={<Alerts />} />
+              <Route path="/simulation" element={<SimulationPanel />} /> {/* Connected */}
               <Route path="*" element={<NotFound />} />
             </Routes>
           </div>
