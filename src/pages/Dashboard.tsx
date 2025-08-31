@@ -1,20 +1,18 @@
 import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Wind, Waves, Thermometer, Eye, AlertTriangle, Ship, TrendingUp, Cloud, Navigation, Loader2 } from 'lucide-react';
+import { Wind, Waves, Thermometer, Eye, AlertTriangle, Ship, TrendingUp, Navigation, Loader2 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
-// Enhanced Dashboard with fully functional buttons and larger ocean video background
 const Dashboard = () => {
   const navigate = useNavigate();
-  const [weatherData, setWeatherData] = useState(null);
-  const [marineData, setMarineData] = useState(null);
-  const [alerts, setAlerts] = useState([]);
-  const [vessels, setVessels] = useState([]);
+  const [weatherData, setWeatherData] = useState<any>(null);
+  const [marineData, setMarineData] = useState<any>(null);
+  const [alerts, setAlerts] = useState<any[]>([]);
+  const [vessels, setVessels] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
-  // Fetch real weather data on component mount
   useEffect(() => {
     fetchAllData();
   }, []);
@@ -22,23 +20,19 @@ const Dashboard = () => {
   const fetchAllData = async () => {
     try {
       setLoading(true);
-      
-      // Fetch weather data for default location (London)
+
       const weatherResponse = await fetch('http://localhost:5000/api/weather/city?city=London');
       const weatherResult = await weatherResponse.json();
       setWeatherData(weatherResult);
 
-      // Fetch marine data for London coordinates
       const marineResponse = await fetch('http://localhost:5000/api/marine?lat=51.5074&lon=-0.1278');
       const marineResult = await marineResponse.json();
       setMarineData(marineResult);
 
-      // Fetch alerts
       const alertsResponse = await fetch('http://localhost:5000/api/alerts');
       const alertsResult = await alertsResponse.json();
       setAlerts(alertsResult);
 
-      // Generate sample vessel data with real weather conditions
       setVessels([
         {
           id: 1,
@@ -74,15 +68,13 @@ const Dashboard = () => {
     }
   };
 
-  // Enhanced weather cards with real data
   const getWeatherCards = () => {
     if (!weatherData) return [];
-    
     return [
       {
         icon: Wind,
         title: 'Wind Speed',
-        value: `${Math.round(weatherData.wind?.speed * 1.94384)} knots`, // Convert m/s to knots
+        value: `${Math.round(weatherData.wind?.speed * 1.94384)} knots`, // ✅ Fixed template literal
         status: weatherData.wind?.speed > 10 ? 'High' : weatherData.wind?.speed > 5 ? 'Moderate' : 'Low',
         color: weatherData.wind?.speed > 10 ? 'text-destructive' : weatherData.wind?.speed > 5 ? 'text-warning' : 'text-success',
         onClick: () => navigate('/forecast')
@@ -114,28 +106,17 @@ const Dashboard = () => {
     ];
   };
 
-  const handleViewDetails = (vesselId) => {
+  const handleViewDetails = (vesselId: number) => {
     const vessel = vessels.find(v => v.id === vesselId);
     if (vessel) {
       alert(`🚢 Vessel Details:\nName: ${vessel.name}\nType: ${vessel.type}\nStatus: ${vessel.status}\nSpeed: ${vessel.speed}\nWind: ${vessel.weather.wind} knots\nTemp: ${vessel.weather.temp}°C`);
     }
   };
 
-  const handleOptimizeRoute = (vesselId) => {
-    navigate('/recommendations');
-  };
-
-  const handleViewAlerts = () => {
-    navigate('/alerts');
-  };
-
-  const handleViewMap = () => {
-    navigate('/map');
-  };
-
-  const handleRefreshData = () => {
-    fetchAllData();
-  };
+  const handleOptimizeRoute = (vesselId: number) => navigate('/recommendations');
+  const handleViewAlerts = () => navigate('/alerts');
+  const handleViewMap = () => navigate('/map');
+  const handleRefreshData = () => fetchAllData();
 
   if (loading) {
     return (
@@ -150,7 +131,7 @@ const Dashboard = () => {
 
   return (
     <div className="relative min-h-screen overflow-hidden">
-      {/* Enhanced Ocean Video Background - Much Larger */}
+      {/* Ocean Video Background */}
       <div className="absolute inset-0 w-full h-full">
         <video 
           autoPlay 
@@ -160,25 +141,19 @@ const Dashboard = () => {
           className="w-full h-full object-cover"
           style={{ minHeight: '100vh', minWidth: '100vw' }}
         >
-          <source src="/src/assets/ocean-waves.mp4" type="video/mp4" />
-          <source src="/ocean-waves.mp4" type="video/mp4" />
-          {/* Fallback animated background if video fails */}
+          <source src="https://videos.pexels.com/video-files/3759212/3759212-uhd_2560_1440_24fps.mp4" type="video/mp4" />
           <div className="w-full h-full wave-animation bg-gradient-to-b from-blue-500 to-blue-800"></div>
         </video>
-        
-        {/* Video Overlay for Better Text Readability */}
         <div className="absolute inset-0 bg-black/30 backdrop-blur-[1px]"></div>
-        
-        {/* Animated Ocean Surface Effect */}
         <div className="absolute inset-0 opacity-60">
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-500/20 to-blue-900/40"></div>
           <div className="wave-animation absolute inset-0 bg-gradient-to-r from-blue-400/30 to-teal-400/30"></div>
         </div>
       </div>
 
-      {/* Main Content with Glass Effect Overlay */}
+      {/* Main Content */}
       <div className="relative z-10 min-h-screen">
-        {/* Hero Section with Enhanced Text Overlay */}
+        {/* Hero Section */}
         <div className="relative pt-20 pb-16 text-center">
           <div className="glass-card mx-4 p-8 max-w-4xl mx-auto backdrop-blur-md bg-white/10 border border-white/20 rounded-3xl">
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-4 drop-shadow-2xl">
@@ -206,7 +181,7 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {/* Weather Cards Grid */}
+        {/* Weather Cards */}
         <div className="px-4 mb-12">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl font-bold text-white mb-8 text-center drop-shadow-lg">
@@ -234,7 +209,7 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {/* Active Alerts Section */}
+        {/* Alerts */}
         {alerts.length > 0 && (
           <div className="px-4 mb-12">
             <div className="max-w-4xl mx-auto">
@@ -272,7 +247,7 @@ const Dashboard = () => {
           </div>
         )}
 
-        {/* Vessel Status Cards */}
+        {/* Vessel Cards */}
         <div className="px-4 mb-12">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl font-bold text-white mb-8 text-center drop-shadow-lg">
@@ -298,7 +273,6 @@ const Dashboard = () => {
                         {vessel.status}
                       </span>
                     </div>
-                    
                     <div className="grid grid-cols-2 gap-4 mb-4 text-sm">
                       <div>
                         <p className="text-white/70">Speed</p>
@@ -309,7 +283,6 @@ const Dashboard = () => {
                         <p className="font-medium text-white">{vessel.weather.wind} knots</p>
                       </div>
                     </div>
-                    
                     <div className="flex gap-2">
                       <Button 
                         onClick={() => handleViewDetails(vessel.id)}
@@ -342,9 +315,7 @@ const Dashboard = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                   <div className="space-y-2">
                     <TrendingUp className="h-10 w-10 mx-auto text-white" />
-                    <div className="text-3xl font-bold text-white">
-                      {weatherData ? '94%' : '92%'}
-                    </div>
+                    <div className="text-3xl font-bold text-white">{weatherData ? '94%' : '92%'}</div>
                     <div className="text-sm text-white/70">Forecast Accuracy</div>
                   </div>
                   <div className="space-y-2">
